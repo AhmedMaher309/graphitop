@@ -24,18 +24,9 @@ def get_swap():
     swap = psutil.swap_memory()
     return swap
 
-
-def display_cpu(num_cores):
-    cpu_percent = psutil.cpu_percent(interval=0.1, percpu=True)
-    print(f"Overall CPU Usage: {sum(cpu_percent) / num_cores:.1f}%")
-    print("CPU Core Usage:")
-    for i, usage in enumerate(cpu_percent):
-        print(f"Core {i}: {usage:.1f}%", end="  ")
-        if (i + 1) % 4 == 0:
-            print()  # New line every 4 cores
-    if num_cores % 4 != 0:
-        print()  # Ensure a new line after cores if not divisible by 4
-    print()
+def get_cpu_percent():
+    cpu_percent = psutil.cpu_percent(interval=1)
+    return cpu_percent
 
 
 def display_processes(processes):
