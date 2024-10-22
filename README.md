@@ -2,7 +2,7 @@
 
 GraphiTop is a graphical system monitoring tool for Linux systems, providing real-time visualization of system resources including CPU, memory, swap usage, and process information. It offers a user-friendly interface with dynamic graphs and tables for easy system performance monitoring.
 
-![GraphiTop Screenshot](screenshot.png)
+![GraphiTop Screenshot](https://github.com/AhmedMaher309/graphitop/blob/main/imgs/Screenshot%20from%202024-10-22%2021-56-44.png)
 
 ## Features
 
