@@ -52,19 +52,9 @@ cd graphitop
 2. Install the required dependencies:
 ```bash
 pip install psutil
+pip install tkinter
 ```
 
-Note: Tkinter usually comes pre-installed with Python. If it's missing, you can install it using:
-```bash
-# For Debian/Ubuntu
-sudo apt-get install python3-tk
-
-# For Fedora
-sudo dnf install python3-tkinter
-
-# For Arch Linux
-sudo pacman -S tk
-```
 
 ## Usage
 
