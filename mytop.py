@@ -24,9 +24,18 @@ def get_swap():
     swap = psutil.swap_memory()
     return swap
 
+
 def get_cpu_percent():
     cpu_percent = psutil.cpu_percent(interval=1)
     return cpu_percent
+
+def get_cpu_count():
+    return psutil.cpu_count(logical=True)
+
+
+def get_cores_percentages():
+    cpu_percentages = psutil.cpu_percent(interval=None, percpu=True)    
+    return cpu_percentages
 
 
 def display_processes(processes):
