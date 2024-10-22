@@ -30,7 +30,6 @@ GraphiTop is a graphical system monitoring tool for Linux systems, providing rea
   - All metrics update every second
   - Color-coded visualizations
   - Sortable process table
-  - Scrollable interface
 
 ## Prerequisites
 
@@ -92,6 +91,3 @@ python3 graphitop.py
 ## Configuration
 
 The interface is configured for a minimum resolution of 1200x900 pixels. The window will automatically scale to your screen size for optimal viewing.
-
-2. For permission errors when accessing process information, try running with sudo:
-```ba
