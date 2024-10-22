@@ -45,7 +45,7 @@ GraphiTop is a graphical system monitoring tool for Linux systems, providing rea
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/graphitop.git
+git clone https://github.com/AhmedMaher309/graphitop.git
 cd graphitop
 ```
 
