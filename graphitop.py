@@ -2,7 +2,7 @@ from tkinter import ttk
 import tkinter as tk
 import time
 
-from system_metrics import get_memory, get_swap, get_cpu_percent, get_cpu_count, get_cores_percentages, get_process_details
+from system_metrics import get_memory, get_swap, get_cpu_percent, get_cpu_count, get_cores_percentages, get_process_details, get_load_avg
 
 mem_vertical_start_point = 0.35
 mem_horizontal_start_point = 0.05
@@ -22,7 +22,8 @@ cores_horizontal_range = 0.35
 processess_table_vertical_start_point = 0.4
 processess_table_horizontal_start_point = 0.02
 
-
+load_avg_vertical_start_point = 0.05
+load_avg_horizontal_start_point = 0.48
 
 """
 Create the staic memory bar and define the progress variable (progress_var)
@@ -193,6 +194,31 @@ def create_processess_frame(root, screen_width):
     return tree
 
 
+"""
+create the text for load averages and render it
+"""
+def create_load_avg_display(root, screen_width):
+    # Add a descriptive label for Load Averages
+    desc_label = tk.Label(root, text="Load Averages:", fg="white", bg="black", 
+                            font=("Arial", 15, "bold"))
+    desc_label.place(relx=load_avg_horizontal_start_point, rely=load_avg_vertical_start_point-0.02)
+
+    # Create labels for 1, 5, and 15-minute load averages
+    load_avg_1_label = tk.Label(root, text="1min: 0.00", fg="white", bg="black", 
+                                 font=("Arial", 15))
+    load_avg_1_label.place(relx=load_avg_horizontal_start_point, rely=load_avg_vertical_start_point)
+
+
+    load_avg_5_label = tk.Label(root, text="5min: 0.00", fg="white", bg="black", 
+                                 font=("Arial", 15))
+    load_avg_5_label.place(relx=load_avg_horizontal_start_point, rely=load_avg_vertical_start_point+0.03)
+
+
+    load_avg_15_label = tk.Label(root, text="15min: 0.00", fg="white", bg="black", 
+                                  font=("Arial", 15))
+    load_avg_15_label.place(relx=load_avg_horizontal_start_point, rely=load_avg_vertical_start_point+0.06)
+
+    return load_avg_1_label, load_avg_5_label, load_avg_15_label
 
 
 """
@@ -315,6 +341,19 @@ def update_processes(root, process_tree):
 
     root.after(500, update_processes, root, process_tree)
 
+"""
+Update the load average values
+"""
+def update_load_avg_display(root, load_avg_labels):
+    load_avg = get_load_avg()
+    load_avg_1_label, load_avg_5_label, load_avg_15_label = load_avg_labels
+
+    load_avg_1_label.config(text=f"1min: {load_avg[0]:.2f}")
+    load_avg_5_label.config(text=f"5min: {load_avg[1]:.2f}")
+    load_avg_15_label.config(text=f"15min: {load_avg[2]:.2f}")
+
+    root.after(500, update_load_avg_display, root, load_avg_labels)
+
 
 root = tk.Tk()
 root.title("GraphiTop")
@@ -347,6 +386,10 @@ update_cpu_graph(root, cpu_graph, cpu_data, start_time)
 # Create the frame for the processess
 process_tree = create_processess_frame(root, screen_width)
 update_processes(root, process_tree)
+
+# display the load average
+load_avg_labels  = create_load_avg_display(root, screen_width)
+update_load_avg_display(root, load_avg_labels)
 
 
 root.mainloop()

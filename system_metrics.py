@@ -78,3 +78,8 @@ def get_process_details():
             continue
     return process_list
 
+
+def get_load_avg():
+    return psutil.getloadavg()
+
+
