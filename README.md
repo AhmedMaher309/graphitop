@@ -12,6 +12,7 @@ GraphiTop is a graphical system monitoring tool for Linux systems, providing rea
   - Memory usage visualization
   - Swap memory usage tracking
   - Detailed process information table
+  - Load average
 
 - **Process Information Display**
   - PID (Process ID)
